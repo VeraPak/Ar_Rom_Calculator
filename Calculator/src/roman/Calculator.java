@@ -5,7 +5,7 @@ import roman.RomanToArabic.Converter;
 import java.util.Scanner;
 
 public class Calculator {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Converter converter = new Converter();
         String[] actions = {"+", "-", "/", "*"};
@@ -48,6 +48,7 @@ public class Calculator {
                 return;
             }
             if ((a <= 10) & (a > 0) & (b > 0) & (b <= 10)) {
+
                 int result;
                 switch (actions[actionIndex]) {
                     case "+":
@@ -59,17 +60,27 @@ public class Calculator {
                     case "*":
                         result = a * b;
                         break;
-                    default:
+                    case "/":
                         result = a / b;
                         break;
+                    default: throw new Exception("Не найден оператор");
                 }
-                if (isRoman) {
+
+                if (result < 0){
+                    System.out.println("B римской системе нет отрицательных чисел");
+                } else if (isRoman) {
                     System.out.println(converter.intToRoman(result));
                 } else {
                     System.out.println(result);
                 }
+
+            } else if (b == 0) {
+                System.out.println("На ноль делить нельзя");
+            } else {
+                System.out.println("Допустимы входные значения до 10");
             }
-            }
+        } else {
+            System.out.println("Используются одновременно разные системы счисления");
         }
     }
-
+}
