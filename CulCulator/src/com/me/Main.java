@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-     static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         Scanner scn = new Scanner(System.in);
         System.out.print("Введите выражение: ");
         String input = scn.nextLine();
